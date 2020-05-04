@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+#paper {
+  width: 98%;
+  height: 95%;
+}
+#printResume {
+  flex: 1;
+  display: none;
+  background: #d4c9c2;
+  text-decoration: none;
+  color: blue;
+  margin-top: 20px;
+  text-align: center;
+  text-shadow: 1px 1px 2px white;
+  font-weight: bolder;
+  border: 1px solid red;
+  border-radius: 15px;
+  width: 100%;
+}
+.resume_code {
+  position: relative;
+}
+.resume_code pre code,
+.resume_code pre,
+.resume_code {
+  width: 100%;
+}
+.resume_paper {
+  position: relative;
+}
+/* 按钮样式 */
+#btn {
+  position: absolute;
+  top: 0px;
+  padding: 10px;
+  width: 80px;
+  background: pink;
+  border-radius: 20px;
+  cursor: pointer;
+}
+#btn:hover {
+  box-shadow: 0 0 20px #f99;
+}
+#btn:focus {
+  outline: none;
+}
+.speed {
+  position: absolute;
+  left: 100px;
+  top: 10px;
+}
+.speedStatus {
+  display: inline-block;
+  font-size: 20px;
+}
+.speed:hover .speedStatus {
+  cursor: pointer;
+  transform: scale(2);
+  text-shadow: 1px 1px 3px red;
+}
+.speedText {
+  opacity: 0;
+  margin-left: 20px;
+}
+.speed:hover .speedText {
+  opacity: 1;
+}
+
+.skip_resume,
+.skip_anime {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -100px;
+  margin-top: -60px;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  cursor: pointer;
+  background: rgba(9, 136, 145, 0.651);
+  border: 1px solid blue;
+  box-sizing: border-box;
+  padding: 20px 30px;
+  border-radius: 10px;
+  display: none;
+}
+
+.skip_resume,
+.skip_anime {
+  animation: opacityAnime 1.5s infinite alternate;
+}
+@keyframes opacityAnime {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+li > code {
+  padding: 2px 4px;
+  margin-right: 4px;
+  border-radius: 4px;
+  color: #455a64;
+  background-color: #455a6426;
+  height: 18px;
+  line-height: 18px;
+  font-size: 90%;
+  font-family: Consolas, monospace, serif;
+}

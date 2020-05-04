@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>动态生成简历</title>
+    <link rel="stylesheet" href="./prism/newPrism.css" />
+    <link rel="stylesheet" href="./src/main.css" />
+    <style id="styleTag"></style>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/marked/0.7.0/marked.min.js"></script>
+    <script src="./prism/prism.js"></script>
+    <script src="./src/code.js"></script>
+    <script>
+      //原理： 利用 定时器和 substring 一个一个打印在页面上，利用pre的空白显示功能显示出空格和回车
+      //利用 html()和定时器 把 样式写在style里
+      //利用 span标签 把 body替换成高亮，方便起见可以用prism库来进行高亮等处理
+      //库prism             selector.html(Prism.highlight(_content, Prism.languages.css));
+      //Prism的css高亮函数，利用span标签，给code 的样式名加上标签并弄上颜色
+    </script>
+    <script src="./src/main.js"></script>
+  </head>
+  <body>
+    <div id="paper">
+      <div class="resume_code">
+        <div class="speed">
+          <span class="speedStatus">🏃</span>
+          <span class="speedText">龟速运行中~点击加速</span>
+        </div>
+        <pre class="language-css"><code class="language-css"></code></pre>
+        <a id="printResume" href="#">打印出来</a>
+        <button id="btn" class="stop">暂停</button>
+      </div>
+      <div class="resume_paper">
+        <div class="resume"></div>
+        <div class="skip_resume">跳过简历书写>></div>
+        <div class="skip_anime">跳过调整动画>></div>
+      </div>
+    </div>
+  </body>
+</html>
