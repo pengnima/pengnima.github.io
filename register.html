@@ -1,0 +1,172 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>注册</title><link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/><style>body {
+        margin: 0;
+        padding: 0;
+        background-color: #888;
+
+        overflow-x: hidden;
+      }</style><style>.main_body {
+        position: absolute;
+
+        width: 100%;
+        height: 80%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .register_form {
+        width: 400px;
+      }
+      .frame_head {
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      .frame_body {
+        box-sizing: border-box;
+        width: 100%;
+
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        background-color: rgba(255, 255, 255, 0.6);
+
+        display: flex;
+        flex-direction: column;
+
+        padding: 20px;
+      }
+      label {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-bottom: 20px;
+      }
+
+      .tip {
+        display: none;
+        padding: 4px 6px;
+        position: absolute;
+        top: -120%;
+        right: 0;
+        width: 30%;
+        border-radius: 6px;
+        background-color: rgba(200, 200, 200, 0.8);
+
+        font-size: 14px;
+        font-weight: bolder;
+      }
+      .tip::before {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: 2px;
+
+        border: 8px solid transparent;
+        border-top: 10px solid rgba(200, 200, 200, 0.8);
+
+        transform: translate(-50%, 50%) rotate(135deg);
+      }
+
+      .frame_body i {
+        width: 42px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        color: #fff;
+        background-color: rgb(255, 80, 80);
+
+        border: 1px solid rgb(255, 80, 80);
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+      }
+      .frame_body input {
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 28px;
+        outline: none;
+
+        border: 1px solid rgb(255, 80, 80);
+        border-left: 0;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+      }
+      label input:focus + .tip {
+        display: block !important;
+      }
+      .regs_btn {
+        outline: none;
+        border: none;
+        height: 40px;
+        width: 60%;
+        margin: 0 auto;
+        color: #fff;
+        border-radius: 6px;
+        background-color: rgba(0, 0, 0, 0.6);
+        cursor: pointer;
+      }
+      .regs_btn:hover {
+        background-color: rgba(255, 80, 80);
+      }</style><link href="./myblog/css/register.css" rel="stylesheet"></head><body><header class="blog_header"><div class="container"><div class="blog_title"><span data-title="彭尼玛">彭尼玛</span> <button class="nav_button"><i class="fa fa-bars"></i></button></div><ul class="nav_bar"><li class="nav_item"><a href="./index.html"><i class="fa fa-home"></i> <span>首页</span></a></li><li class="nav_item"><a href="javascript:;"><i class="fa fa-book"></i> <span>学习资料</span></a><div class="nav_mask"><a href="javascript:;">网络</a> <a href="javascript:;">算法</a> <a href="javascript:;">其他</a></div></li><li class="nav_item"><a href="https://www.bilibili.com"><i class="fa fa-bookmark"></i> <span>项目演示</span></a></li><li class="nav_item"><a href="https://www.bilibili.com"><i class="fa fa-envelope"></i> <span>留言板</span></a></li><li class="nav_item"><a href="https://www.bilibili.com"><i class="fa fa-star"></i> <span>占位</span></a></li></ul></div></header><section class="bg_collapse"><ul class="bg_total"><li><span class="bg_slider"></span></li><li><span class="bg_slider"></span></li><li><span class="bg_slider"></span></li><li><span class="bg_slider"></span></li><li><span class="bg_slider"></span></li></ul></section><div class="main_body"><div class="register_form"><div class="frame_head"><span>注册面板</span></div><div class="frame_body"><label><i class="fa fa-user"></i> <input id="user" placeholder="请输入用户名" autocomplete="off"/><div class="tip">请输入3~6位汉字、字母、数字</div></label> <label><i class="fa fa-envelope"></i> <input id="email" type="email" placeholder="请输入邮箱" autocomplete="off"/><div class="tip">请输入正确格式的邮箱</div></label> <label><i class="fa fa-lock"></i> <input class="pwd" type="password" placeholder="请输入密码"/><div class="tip">请输入6~9位字符作为密码</div></label> <label><i class="fa fa-lock"></i> <input class="pwd" type="password" placeholder="请再次输入密码"/></label> <button class="regs_btn" onclick="regsClick()">注册</button></div></div></div><script src="./myblog/js/Bmob-2.2.4.min.js"></script><script>Bmob.initialize("7d0d37c291c33193", "123456");
+      // Bmob.debug(true);
+      let $user = document.querySelector("#user");
+      let $email = document.querySelector("#email");
+      let $pwds = document.querySelectorAll(".pwd");
+
+      let user_reg = new RegExp(/^[\w|\u4e00-\u9fa5]{3,6}$/);
+      let email_reg = new RegExp(/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/);
+      let pwd_reg = new RegExp(/^\w{6,9}$/);
+      function checkValue(value, reg) {
+        return reg.test(value);
+      }
+
+      //Bmob 会自动帮你在注册时查重，且对于email有格式要求
+      function regsClick() {
+        if ($pwds[0].value !== $pwds[1].value) {
+          alert("两次输入的密码不一致");
+          return;
+        }
+        if (!user_reg.test($user.value)) {
+          alert("用户名输入不规范");
+          return;
+        }
+        if (!email_reg.test($email.value)) {
+          alert("邮箱输入不规范");
+          return;
+        }
+        if (!pwd_reg.test($pwds[0].value)) {
+          alert("密码输入不规范");
+          return;
+        }
+
+        let params = {
+          username: $user.value,
+          password: $pwds[0].value,
+          email: $email.value,
+        };
+        Bmob.User.register(params)
+          .then(res => {
+            console.log(res);
+            location.href = "./index.html";
+          })
+          .catch(err => {
+            switch (err.code) {
+              case 202:
+                alert("该用户已注册");
+                break;
+              case 203:
+                alert("该邮箱已注册");
+                break;
+              default:
+                console.log(err);
+                alert(err.error);
+                break;
+            }
+          });
+      }</script><script src="./myblog/js/register.js"></script></body></html>
